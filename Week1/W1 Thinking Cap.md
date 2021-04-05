@@ -1,6 +1,7 @@
 
 # Week 1 Thinking Cap
 ## Screenshot of the Site
+![image](https://user-images.githubusercontent.com/56007288/113608535-92fa2c00-95ff-11eb-9530-5015ba3dba9b.png)
 
 ## Website Link
 https://www.purpleair.com/map?opt=1/mAQI/a10/cC0#10.41/34.0423/-118.4132
