@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Favorite Places Michelle Has Travelled To</title>
+	<meta charset="utf-8" />
+
+	<!-- style sheets -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- leaflet -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+</head>
+
+<body>
+
+	<div class="header">
+		Favorite Places Michelle Has Travelled To 
+	</div>
+	<div class="sidebar">
+		In the past few years, my family and I began to take more regular vacation trips. These are a few of my favorite locations that I've been to in the US!
+	</div>
+	<div class="content">
+		<div id="map"></div>
+	</div>
+
+	<script>
+		var map = L.map('map').setView([37.850033,-113.6500523], 3.33);
+
+		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+		}).addTo(map);
+		let data = [
+			{
+				'title':'Chicago',
+				'description': 'Last travelled here in Summer 2018. I really enjoyed walking the Chicago Riverwalk during the evening.',
+				'lat': 41.8781,
+				'lon': -87.6298
+			},
+			{
+				'title':'Los Angeles',
+				'description': 'Last travelled here in March 2020. It is crazy that I have not been back to UCLA in more than a year. I hope I will come back soon...',
+				'lat': 34.0522,
+				'lon': -118.2437
+			},
+			{
+				'title':'New York City',
+				'description': 'Last travelled here in Summer 2017. Tried the best pizza!',
+				'lat': 40.7128,
+				'lon': -74.0060
+			},
+			{
+				'title':'Boston',
+				'description': 'Last travelled here in Summer 2017. I did not realize how many colleges were in the area and how close they were.',
+				'lat': 42.3601,
+				'lon': -71.0589
+			},
+			{
+				'title':'Honolulu',
+				'description': 'Last travelled here in Summer 2019. It was so lush and beautiful; I really want to go back someday.',
+				'lat': 21.3069,
+				'lon': -157.8583
+			}
+		]
+
+		var marker = L.marker([41.8781,-87.6298]).addTo(map)
+			.bindPopup('Chicago<br>Travelled here in Summer 2018. I really enjoyed walking the Chicago Riverwalk during the evening.')
+			.openPopup();
+		data.forEach(function(item){
+			var marker = L.marker([item.lat,item.lon]).addTo(map)
+				.bindPopup(item.title+'<br>'+item.description)
+				.openPopup();
+		});
+	</script>
+</body>
+</html> 
