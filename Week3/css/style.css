@@ -1,0 +1,42 @@
+body,html {
+	margin:0;
+	height:100%;
+	width:100%;
+}
+
+#map {
+	height: 100%;
+}
+
+body {
+    display: grid;
+	grid-template-rows: 80px 1fr;
+	grid-template-columns: 30% 70%;
+	grid-template-areas: 
+	"header header"
+	"sidebar content";
+}
+
+.header {
+	grid-area: header;
+	padding:10px;
+    background-color: rgb(50, 112, 101);
+	color:bisque
+}
+.sidebar {
+	grid-area: sidebar;
+	padding:10px;
+    background-color: rgb(43, 146, 127);
+	color:bisque
+}
+.content {
+	grid-area: content;
+}
+
+.sidebar-item {
+	padding: 10px
+	background: gainsboro;
+	border: 1px solid gray;
+	margin: 5px;
+	color: black;
+}
