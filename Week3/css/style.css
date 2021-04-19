@@ -19,15 +19,18 @@ body {
 
 .header {
 	grid-area: header;
+	text-align: center;
 	padding:10px;
     background-color: rgb(50, 112, 101);
 	color:bisque
 }
+  
 .sidebar {
 	grid-area: sidebar;
 	padding:20px;
     background-color: rgb(43, 146, 127);
-	color:bisque
+	color:bisque;
+	overflow: auto
 }
 .content {
 	grid-area: content;
@@ -36,7 +39,16 @@ body {
 .sidebar-item {
 	padding: 10px;
 	background: bisque;
-	border: 5px solid rgb(50, 112, 101);
+	border: 2px solid rgb(50, 112, 101);
 	margin: 15px;
 	color: rgb(50, 112, 101);
 }
+
+.sidebar-item:hover {
+	padding: 10px;
+	background: rgb(50, 112, 101);
+	border: 5px bisque;
+	margin: 15px;
+	color: bisque;
+}
+
