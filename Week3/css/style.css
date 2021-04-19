@@ -25,7 +25,7 @@ body {
 }
 .sidebar {
 	grid-area: sidebar;
-	padding:10px;
+	padding:20px;
     background-color: rgb(43, 146, 127);
 	color:bisque
 }
@@ -34,9 +34,9 @@ body {
 }
 
 .sidebar-item {
-	padding: 10px
-	background: gainsboro;
-	border: 1px solid gray;
-	margin: 5px;
-	color: black;
+	padding: 10px;
+	background: bisque;
+	border: 5px solid rgb(50, 112, 101);
+	margin: 15px;
+	color: rgb(50, 112, 101);
 }

@@ -1,38 +1,57 @@
-var map = L.map('map').setView([37.850033,-113.6500523], 3.33);
+var greenIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
+
+var map = L.map('map').setView([49.1391,-102.9915], 3.33);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 let data = [
     {
-        'title':'Chicago',
-        'description': 'Last travelled here in Summer 2018. I really enjoyed walking the Chicago Riverwalk during the evening.',
-        'lat': 41.8781,
-        'lon': -87.6298
-    },
-    {
-        'title':'Los Angeles',
-        'description': 'Last travelled here in March 2020. It is crazy that I have not been back to UCLA in more than a year. I hope I will come back soon...',
-        'lat': 34.0522,
-        'lon': -118.2437
-    },
-    {
-        'title':'New York City',
-        'description': 'Last travelled here in Summer 2017. Nothing beats $1 slices of thin crust pizza!',
-        'lat': 40.7128,
-        'lon': -74.0060
-    },
-    {
         'title':'Boston',
-        'description': 'Last travelled here in Summer 2017. I did not realize how many colleges were in the area and how close they were.',
+        'time': ': Last travelled here in Summer 2017.',
+        'description': ' I did not realize how many colleges were in the area and how close they were.',
+        'image': 'images/boston.png',
         'lat': 42.3601,
         'lon': -71.0589
     },
     {
+        'title':'New York City',
+        'time': ': Last travelled here in Summer 2017.',
+        'description': ' Nothing beats $1 slices of thin crust pizza!',
+        'image': 'images/newyork.png',
+        'lat': 40.7128,
+        'lon': -74.0060
+    },
+    {
+        'title':'Chicago',
+        'time': ': Last travelled here in Summer 2018.',
+        'description': ' I really enjoyed walking the Chicago Riverwalk during the evening.',
+        'image': 'images/chicago.JPG',
+        'lat': 41.8781,
+        'lon': -87.6298
+    },
+    {
         'title':'Honolulu',
-        'description': 'Last travelled here in Summer 2019. It was so lush and beautiful; I really want to go back someday.',
+        'time': ': Last travelled here in Summer 2019.',
+        'description': ' It was so lush and beautiful; I really want to go back someday.',
+        'image': 'images/hawaii.JPG',
         'lat': 21.3069,
         'lon': -157.8583
+    },
+    {
+        'title':'Los Angeles',
+        'time': ': Last travelled here in March 2020.',
+        'description': ' It is crazy that I have not been back to UCLA in more than a year. I hope I will come back soon...',
+        'image': 'images/losangeles.png',
+        'lat': 34.0522,
+        'lon': -118.2437
     }
 ]
 
@@ -40,11 +59,11 @@ let myMarkers = L.featureGroup();
 
 
 data.forEach(function(item,index){
-    var marker = L.marker([item.lat,item.lon])
-        .bindPopup(`<div>${item.title}</div><img src="${item.image}" width=100%><br>${item.description}`)
+    var marker = L.marker([item.lat,item.lon], {icon: greenIcon})
+        .bindPopup(`<div>${item.title}${item.time}</div>`)
     myMarkers.addLayer(marker)
 
-    $('.sidebar').append(`<div class="sidebar-item" onclick="flyToIndex(${index})">${item.title}</div>`)
+    $('.sidebar').append(`<div class="sidebar-item" onclick="flyToIndex(${index})"><div><b>${item.title}</b></div><img src="${item.image}" width=70% height=70%><br>${item.description}</div>`)
 });
 
 myMarkers.addTo(map)
