@@ -43,3 +43,7 @@ body {
 	padding:10px;
 	background-color: rgb(175, 175, 175);
 }
+
+.leaflet-container.crosshair-cursor-enabled {
+    cursor:crosshair;
+}

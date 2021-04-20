@@ -1,9 +1,9 @@
 // Global variables
 let map;
-let lat = 0;
-let lon = 0;
+let lat = 34.0522;
+let lon = -118.2437;
 let zl = 3;
-let path = "data/dunitz.csv";
+let path = "data/Urban_Art_Locations.csv";
 let markers = L.featureGroup();
 
 // initialize
@@ -50,20 +50,30 @@ function mapCSV(data){
 	// loop through each entry
 	data.data.forEach(function(item,index){
 		// create a marker
-		let marker = L.circleMarker([item.latitude,item.longitude],circleOptions)
+		// let marker = L.circleMarker([item.latitude,item.longitude],circleOptions)
+		let marker = L.marker([item.latitude, item.longitude], {icon: greenIcon})
 		.on('mouseover',function(){
-			this.bindPopup(`${item.title}<br><img src="${item.thumbnail_url}">`).openPopup()
+			this.bindPopup(`${item.title}<br><img src="${item.thumbnail_url}" width=100px alt=" Image Not Provided in Data"><br>${item.artist_name}, ${item.installation_date}`).openPopup()
 		})
 
 		// add marker to featuregroup
 		markers.addLayer(marker)
 
 		// add entry to sidebar
-		$('.sidebar').append(`<img src="${item.thumbnail_url}" onmouseover="panToImage(${index})">`)
+		$('.sidebar').append(`<img src="${item.thumbnail_url}" width=100px onmouseover="panToImage(${index})">`)
 	})
 
 	// add featuregroup to map
 	markers.addTo(map)
+
+	// define layers
+	let layers = {
+    	"My Markers": markers
+	}
+
+// add layer control box
+L.control.layers(null,layers).addTo(map)
+
 
 	// fit map to markers
 	map.fitBounds(markers.getBounds())
@@ -73,3 +83,19 @@ function panToImage(index){
 	map.setZoom(17);
 	map.panTo(markers.getLayers()[index]._latlng);
 }
+
+var LeafIcon = L.Icon.extend({
+    options: {
+       iconSize:     [30, 30],
+       iconAnchor:   [15, 29],
+       shadowAnchor: [1, 12],
+       popupAnchor:  [-1, -20]
+    }
+});
+
+var greenIcon = new LeafIcon({
+    iconUrl: 'images/paintpaletteicon.png',
+})
+
+// Assumes your Leaflet map variable is 'map'..
+L.DomUtil.addClass(map._container,'crosshair-cursor-enabled');
