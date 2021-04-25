@@ -38,19 +38,9 @@ function readCSV(path){
 
 function mapCSV(data){
 
-	// circle options
-	let circleOptions = {
-		radius: 5,
-		weight: 1,
-		color: 'white',
-		fillColor: 'dodgerblue',
-		fillOpacity: 1
-	}
-
 	// loop through each entry
 	data.data.forEach(function(item,index){
 		// create a marker
-		// let marker = L.circleMarker([item.latitude,item.longitude],circleOptions)
 		let marker = L.marker([item.latitude, item.longitude], {icon: greenIcon})
 		.on('mouseover',function(){
 			this.bindPopup(`${item.title}<br><img src="${item.thumbnail_url}" width=100px alt=" Image Not Provided in Data"><br>${item.artist_name}, ${item.installation_date}`).openPopup()
