@@ -50,7 +50,7 @@ function mapCSV(data){
 		markers.addLayer(marker)
 
 		// add entry to sidebar
-		$('.sidebar').append(`<img src="${item.thumbnail_url}" width=100px onmouseover="panToImage(${index})">`)
+		$('.sidebar').append(`<div>${item.title}<br><img src="${item.thumbnail_url}" width=200px onmouseover="panToImage(${index})"><br>by ${item.artist_name}, ${item.installation_date}</div><br>`)
 	})
 
 	// add featuregroup to map

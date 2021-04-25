@@ -11,26 +11,28 @@ body,html {
 body {
 	display: grid;
 	grid-template-rows: 80px 1fr 50px;
-	grid-template-columns: 50% 50%;
+	grid-template-columns: 20% 80%;
 	grid-template-areas: 
 	"header header"
 	"sidebar content"
 	"footer footer";
+	font-family: 'Poppins', sans-serif;
 }
 
 .header {
 	grid-area: header;
 	padding:10px;
-	background-color: #333;
-	color: white;
+	background-color: rgb(49, 90, 228);
+	color: rgb(235, 214, 24);
 	font-size: 2em;
+	font-family: 'Alegreya Sans', sans-serif;
 }
 
 .sidebar {
-	color: white;
+	color: rgb(143, 31, 187);
 	grid-area: sidebar;
-	padding:10px;
-	background-color: #555;
+	padding:27px;
+	background-color: rgb(119, 167, 230);
 	overflow: auto;
 }
 
@@ -41,9 +43,5 @@ body {
 .footer {
 	grid-area: footer;
 	padding:10px;
-	background-color: rgb(175, 175, 175);
-}
-
-.leaflet-container.crosshair-cursor-enabled {
-    cursor:crosshair;
+	background-color: rgb(82, 145, 226);
 }
