@@ -86,7 +86,7 @@ function panToImage(index){
 
 var LeafIcon = L.Icon.extend({
     options: {
-       iconSize:     [30, 30],
+       iconSize:     [40, 40],
        iconAnchor:   [15, 29],
        shadowAnchor: [1, 12],
        popupAnchor:  [-1, -20]
@@ -94,7 +94,7 @@ var LeafIcon = L.Icon.extend({
 });
 
 var greenIcon = new LeafIcon({
-    iconUrl: 'images/paintpaletteicon.png',
+    iconUrl: 'images/spraycan.png',
 })
 
 // Assumes your Leaflet map variable is 'map'..
